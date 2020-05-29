@@ -13,28 +13,31 @@ block content
             div(class="input-group-text")
               button(type="submit" style="padding:0px;margin:0px;border:0px;background-color:transparent;box-sizing:unset !important;")
                 span(class="material-icons") search
-      -var x=0;
-      while x++<contact.length
-        div(class='card')
-          a(href="#demo"+x class="card-header clear-fix" style="cursor:pointer" data-toggle="collapse")
-            div(class="float-left")  
-              strong #{contact[x-1].Name}
-            div(class="float-right") 
-                span(class="material-icons") keyboard_arrow_down
-          div(id="demo"+x class='card-body p-0 pl-3 collapse')
-            div(class="mb-3 mt-4")
-              strong DOB : 
-              span #{(((contact[x-1].DOB).split("/")).reverse()).join("/")}
-            div(class="row")
-              div(class='col-sm-5')
-                each item in contact[x-1].numbers
-                  div(class="contact mb-2") +91-#{item}
-              div(class="col-sm-7")
-                each item in contact[x-1].emails
-                  div(class="email mb-2") #{item}
-            div(class="mt-2  clear-fix float-right")
-              a(href="/remove/contact/"+contact[x-1]._id class="btn btn-info btn-sm m-1") Remove
-              a(href="/edit/contact/"+contact[x-1]._id class="btn btn-danger text-white btn-sm m-2") Edit
+      if contact.length>0
+        -var x=0;
+        while x++<contact.length
+          div(class='card')
+            a(href="#demo"+x class="card-header clear-fix" style="cursor:pointer" data-toggle="collapse")
+              div(class="float-left")  
+                strong #{contact[x-1].Name}
+              div(class="float-right") 
+                  span(class="material-icons") keyboard_arrow_down
+            div(id="demo"+x class='card-body p-0 pl-3 collapse')
+              div(class="mb-3 mt-4")
+                strong DOB : 
+                span #{contact[x-1].DOB}
+              div(class="row")
+                div(class='col-sm-5')
+                  each item in contact[x-1].numbers
+                    div(class="contact mb-2") +91-#{item}
+                div(class="col-sm-7")
+                  each item in contact[x-1].emails
+                    div(class="email mb-2") #{item}
+              div(class="mt-2  clear-fix float-right")
+                a(href="/remove/contact/"+contact[x-1]._id class="btn btn-info btn-sm m-1") Remove
+                a(href="/edit/contact/"+contact[x-1]._id class="btn btn-danger text-white btn-sm m-2") Edit
+      else
+        h1(class="text-muted" style="text-align:center") NO CONTACTS
       div(class='footer')
         ul(class="pagination pagination justify-content-center")
           li(class="page-item" id="pre")
