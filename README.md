@@ -2,6 +2,10 @@
     npm install
 # Start
     npm start
+# Deployment
+   Deployed at Azure
+   
+   link: https://phone-book.azurewebsites.net/
     
 # Schema
   {
@@ -10,5 +14,3 @@
     numbers:[{type:String}],
     emails:[{type:String}],
 }
-# Routes
-
